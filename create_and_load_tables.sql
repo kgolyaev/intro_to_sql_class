@@ -83,6 +83,7 @@ create table customer_transactions
    -- Now let's load the auctions data -- 
    --------------------------------------
  */  
+drop table if exists auctions cascade;
 create table auctions
 (
     auction_id  integer 
@@ -95,6 +96,7 @@ create table auctions
 
 \copy auctions ( auction_id, volume, district, date ) from './auctions.csv' delimiter ',' csv header;
 
+drop table if exists bidders cascade;
 create table bidders 
 (
     bidder_id    integer 
@@ -114,6 +116,7 @@ create table bidders
 
 \copy bidders ( bidder_id, first_name, last_name, address1, address2, town, province, postal_code, telephone, email, preferred ) from './bidders.csv' delimiter ',' csv header;
 
+drop table if exists bids cascade;
 create table bids 
 (
     bid_id       integer  
@@ -127,6 +130,7 @@ create table bids
 \copy bids ( bid_id, auction_id, bidder_id, bid ) from './bids.csv' delimiter ',' csv header;
 
 -------------------------------------------------------
+drop table if exists demo_nulls cascade;
 create table demo_nulls (user_name varchar(4), user_age integer);
 insert into demo_nulls (user_name, user_age) values ('Ann', 20);
 insert into demo_nulls (user_name, user_age) values ('Bob', NULL);
